@@ -1,0 +1,22 @@
+[
+  {"id":"L01","category":"学习","title":"每天背200词完整产物","input":"公开风格方法帖转述样例","check":"valid_word","expected":"独立word200 fixture的output/plan PASS；人工三产物完整"},
+  {"id":"L02","category":"学习","title":"阅读50页改复述版","input":"阅读方法转述样例","check":"manual_L02","expected":"reading独立fixture与手动三产物通过"},
+  {"id":"L03","category":"学习","title":"编程20题改独立输出","input":"刷题方法转述样例","check":"manual_L03","expected":"programming独立fixture与手动三产物通过"},
+  {"id":"L04","category":"学习/边界","title":"纯英文学习经验","input":"Review 20 pages every morning and reread notes weekly.","check":"valid_english","expected":"english独立fixture结构与计划通过；语义另评"},
+  {"id":"L05","category":"学习/失败","title":"时间超预算与重复阶段名","input":"40分钟预算；同名阶段重复计算","check":"time_over_budget","expected":"validate_plan 对两种变体均 FAIL"},
+  {"id":"L06","category":"学习/失败","title":"缺少检查点与非有限时间","input":"删除checkpoint；NaN分钟","check":"missing_checkpoint","expected":"validate_plan 对两种变体均 FAIL"},
+  {"id":"L07","category":"学习/失败","title":"表达限制、映射与分享上限","input":"9问；4分支；步骤错位；未执行分享；通用标识缺失","check":"forbidden_percentage","expected":"validate_output 对五种变体 FAIL；百分比与承诺由文档契约约束"},
+  {"id":"L08","category":"学习/边界","title":"一篇经验多个目标","input":"同时提分、练口语、养习惯","check":"contract_multi_goal","expected":"静态契约要求唯一主目标，不计作行为证明"},
+  {"id":"H01","category":"居家","title":"租房单抽屉完整产物","input":"全屋收纳转述样例","check":"valid_home","expected":"home独立fixture的output/plan PASS"},
+  {"id":"G01","category":"跨领域/学习","title":"摄影技能练习真实Agent样本","input":"每天50张、买镜头、公开求评","check":"valid_photography","expected":"photography独立fixture output/plan PASS；真实Agent语义另评"},
+  {"id":"H03","category":"居家/拒答","title":"关键家庭信息拒答","input":"用户不想透露家庭成员","check":"conditional_refusal","expected":"conditional-home独立fixture含条件式v1和未知分支"},
+  {"id":"H04","category":"居家/语义","title":"伪实验禁止清单仍在文档","input":"再调研一下","check":"contract_pseudo_documented","expected":"静态契约保留禁止清单；伪实验识别归模型/评审"},
+  {"id":"B01","category":"边界","title":"空输入与无可执行步骤","input":"空输入；只要努力就会成功","check":"contract_empty","expected":"静态契约请求正文，且无步骤时只拆解"},
+  {"id":"B02","category":"边界","title":"超长文本与编码","input":"分段正文与UTF-8 BOM","check":"contract_long","expected":"静态分段契约且脚本实际读取BOM"},
+  {"id":"G02","category":"通用回退","title":"团队协作通用模式真实Agent样本","input":"每天30分钟全员例会、采购软件、完整记录","check":"valid_team","expected":"team-meeting独立fixture含generic标识且output/plan PASS"},
+  {"id":"B04","category":"边界","title":"纯情绪内容","input":"我今天很沮丧","check":"contract_emotion","expected":"静态契约不进入经验试穿"},
+  {"id":"B05","category":"边界/高风险","title":"医疗和投资","input":"医疗停药建议；投资买卖建议","check":"contract_high_risk","expected":"静态契约高风险退出"},
+  {"id":"R01","category":"复用","title":"同一经验换个人条件","input":"120分钟、3500词、晨型、无碎片时间","check":"reuse_conditions","expected":"word200与word200-alt两份完整fixture至少3处判定变化"},
+  {"id":"R02","category":"复用/画像","title":"第二次使用、冲突、备份恢复与故障","input":"已确认40分钟，新候选60分钟；注入写失败","check":"profile_flow","expected":"未确认不写；无效写不变；恢复故障回滚；会话降级"},
+  {"id":"R03","category":"复用/降级","title":"无脚本无持久化与真实粘贴路径","input":"用户粘贴真实高赞笔记正文，无Python不可写","check":"degradation","expected":"静态文本核心路径与手动记录存在；不抓链接不伪结果"}
+]

@@ -1,0 +1,51 @@
+{
+  "outcome":"fitted",
+  "domain_mode":"vertical",
+  "experience_summary":"将每天50张公开求评改为现有设备、30分钟、私密反馈的构图练习，待验证。",
+  "content_type":"可执行经验",
+  "author_goal":"通过拍摄检查和反馈练习摄影",
+  "evidence_strength":"原帖无可验证结果，当前只有模拟用户条件，没有实践记录",
+  "author_conditions":["每天全手动拍50张","公开求评","建议升级镜头"],
+  "steps":["S1 每天全手动拍50张","S2 马上买高级镜头","S3 每张放大检查","S4 选9张公开求评","S5 根据评论换参数"],
+  "claims":["作者声称一个月后自然明显进步"],
+  "hidden_assumptions":["推测：用户有预算、公开意愿和有效评论"],
+  "unknowns":["18分钟拍12张加10分钟检查分享加2分钟记录能否在30分钟内完成"],
+  "branches":["如果两次均不超30分钟且记录完整，那么继续同流程","如果任一次超时，那么结束本轮，新剂量另开版本"],
+  "questions":[
+    {"round":"initial","question":"唯一目标是曝光对焦还是构图？","why_it_matters":"决定数量和指标","judgments_it_can_flip":["S1","S3","S5"],"uncertainty":"目标","priority":1,"answer_status":"answered"},
+    {"round":"initial","question":"当前基础和主要卡点？","why_it_matters":"决定全手动是否保留","judgments_it_can_flip":["S1"],"uncertainty":"基础","priority":2,"answer_status":"answered"},
+    {"round":"initial","question":"现有设备和预算？","why_it_matters":"决定购镜步骤","judgments_it_can_flip":["S2"],"uncertainty":"设备预算","priority":3,"answer_status":"answered"},
+    {"round":"initial","question":"每周拍摄检查时间和场地？","why_it_matters":"决定拍摄和检查数量","judgments_it_can_flip":["S1","S3"],"uncertainty":"时间场地","priority":4,"answer_status":"answered"},
+    {"round":"initial","question":"是否接受公开发布？","why_it_matters":"决定反馈渠道","judgments_it_can_flip":["S4"],"uncertainty":"隐私边界","priority":5,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 每天全手动拍50张","personal_conditions":["目标构图","每周4次每次30分钟"],"status":"改造","reason":"原数量与时间和目标不匹配","evidence":"原S1及目标时间回答","source":"个人改造","background":"需要保留实际拍摄","options":["50张","12张"],"decision":"每次12张每周4次","consequences":"练习量减少","reversibility":"新剂量另开版本"},
+    {"step":"S2 马上买高级镜头","personal_conditions":["预算0元","明确不买"],"status":"放弃","reason":"与消费边界冲突","evidence":"原S2及预算回答","source":"个人改造","background":"原步骤默认升级设备","options":["购买","放弃"],"decision":"不购买使用套头","consequences":"无新增设备功能","reversibility":"未消费"},
+    {"step":"S3 每张放大检查","personal_conditions":["拍摄检查共30分钟"],"status":"改造","reason":"逐张检查会挤压练习","evidence":"原S3及时间回答","source":"个人改造","background":"需要同口径反馈","options":["全检","抽查3张"],"decision":"固定检查3张","consequences":"可能遗漏其他照片信息","reversibility":"新检查量另开版本"},
+    {"step":"S4 选9张公开求评","personal_conditions":["不愿公开","有3人私密群"],"status":"改造","reason":"公开发布与隐私边界冲突","evidence":"原S4及隐私回答","source":"个人改造","background":"需要小范围反馈","options":["公开","私密"],"decision":"私密群分享3张","consequences":"反馈样本小","reversibility":"可停止分享"},
+    {"step":"S5 根据评论换参数","personal_conditions":["唯一目标构图"],"status":"改造","reason":"参数调整不服务唯一目标","evidence":"原S5及目标回答","source":"个人改造","background":"反馈需要转为构图行动","options":["换参数","构图提醒"],"decision":"写1条构图提醒","consequences":"不验证参数效果","reversibility":"下一版本可改"}
+  ],
+  "executable_plan":{
+    "personal_v1":["现有相机套头每次拍12张","固定检查3张","私密群反馈并写构图提醒"],
+    "plan":{
+      "goal":"只验证30分钟固定构图练习流程能否完成",
+      "success_criteria":"首轮2次均留下12张照片、3张检查记录和实际用时",
+      "assumptions":["30分钟流程待验证","本轮不改变剂量设备场地和反馈渠道"],
+      "resources":["入门相机套头","附近公园","3人私密群","每次30分钟"],
+      "phases":[
+        {"name":"P0验证","duration":"第1至2次","minutes":30,"actions":["18分钟拍12张","10分钟检查并私密分享3张","2分钟记录"],"output":"照片检查与用时记录","checkpoint":{"when":"第2次结束","metric":"实际用时","threshold":">30","action":"结束本轮，新剂量另开版本"}},
+        {"name":"P1练习","duration":"通过后的第3至8次","minutes":30,"actions":["完全沿用P0流程"],"output":"6次同口径记录","checkpoint":{"when":"第8次结束","metric":"完整记录数","threshold":"<6","action":"标证据不足不判无效"}}
+      ],
+      "schedule":"下一个公园空档开始，每周4次",
+      "fallbacks":["没时间则不计入本轮","缺设备或场地则顺延","中断不补","状态差停止"],
+      "stop_rules":["任一次超时即结束本轮","改变关键变量另开版本"],
+      "first_action":"今天预约一次30分钟公园练习并写好量表",
+      "not_to_do":["不买镜头","不公开发布","不追求50张","不在本轮改剂量"],
+      "provenance":[{"phase":"P0验证","source":"个人改造","detail":"由原S1至S5缩小剂量并改私密反馈"},{"phase":"P1练习","source":"个人改造","detail":"P0通过后保持同流程"}],
+      "feasibility_checks":{"resources":"现有设备场地和私密群","dependencies":"P1依赖P0通过","risks":"超时和隐私，停止规则控制","habit_changes":1},
+      "time_budgets":[{"name":"P0单次","available_minutes":30,"phase_names":["P0验证"]},{"name":"P1单次","available_minutes":30,"phase_names":["P1练习"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"18加10加2分钟流程能在30分钟内完成","action":"保持相同流程完成首轮2次","context":"现有设备附近公园和私密群","cost":"2次共60分钟0元","reversibility":"可停止，新剂量另开版本","frequency_or_opportunities":"首轮2次有效机会","metric":"实际用时、照片数、检查记录完整性","stop_rule":"任一次超时即结束本轮","decision_rule":"两次均按时完整则进入P1，否则当前版不适用，不以减量后的结果裁决原假设","first_action":"预约第一次练习"},
+  "profile_updates":[]
+}

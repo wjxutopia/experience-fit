@@ -1,0 +1,69 @@
+{
+  "outcome": "fitted",
+  "domain_mode": "vertical",
+  "experience_summary": "将每天背200词改编为40分钟晚间版本，本轮只验证时间可行性，结果待验证。",
+  "content_type": "可执行经验",
+  "author_goal": "通过新词、复习和自测组合积累词汇",
+  "evidence_strength": "原帖只有作者自述，没有记录、对照或当前用户证据",
+  "author_conditions": ["在校生", "每天3小时", "已有3000词基础"],
+  "steps": ["S1 早晨背200个新词", "S2 碎片时间复习旧词", "S3 晚间自测", "S4 使用晨间时段"],
+  "claims": ["作者声称这样记得牢"],
+  "hidden_assumptions": ["推测：作者能稳定早起并完成自测"],
+  "unknowns": ["40词晚间流程能否在40分钟预算内完成"],
+  "branches": ["如果本轮实际用时超过40分钟，那么结束本轮并记为当前版本时间不可行，另开不同剂量版本"],
+  "questions": [
+    {"round": "initial", "question": "工作日稳定可用多少分钟？", "why_it_matters": "决定新词量和阶段预算", "judgments_it_can_flip": ["S1"], "uncertainty": "可用时间", "priority": 1, "answer_status": "answered"},
+    {"round": "initial", "question": "当前词汇基础及最近复习方式？", "why_it_matters": "决定起点和自测设计", "judgments_it_can_flip": ["S1", "S3"], "uncertainty": "当前基础", "priority": 2, "answer_status": "answered"},
+    {"round": "initial", "question": "早晨还是晚间更容易固定执行？", "why_it_matters": "决定晨间步骤是否保留", "judgments_it_can_flip": ["S4"], "uncertainty": "作息", "priority": 3, "answer_status": "answered"},
+    {"round": "initial", "question": "白天是否有可复习的碎片时间？", "why_it_matters": "决定碎片复习保留还是改期", "judgments_it_can_flip": ["S2"], "uncertainty": "碎片时间", "priority": 4, "answer_status": "answered"}
+  ],
+  "fit_judgments": [
+    {"step": "S1 早晨背200个新词", "personal_conditions": ["每天40分钟", "约2500词", "夜型作息"], "status": "改造", "reason": "数量与作息均冲突", "evidence": "原S1及时间基础作息回答", "source": "个人改造", "background": "原方案需要较多时间", "options": ["保留", "减量并换时段"], "decision": "改为晚间40词", "consequences": "每日覆盖量下降", "reversibility": "可在下一版本调整"},
+    {"step": "S2 碎片时间复习旧词", "personal_conditions": ["白天通勤有约10分钟", "已有词表"], "status": "保留", "reason": "用户明确有碎片时间且不占用主时段", "evidence": "原S2及碎片时间回答", "source": "原作者", "background": "复习是原经验步骤", "options": ["保留", "删除"], "decision": "保留为可选动作", "consequences": "增加少量碎片任务", "reversibility": "可取消"},
+    {"step": "S3 晚间自测", "personal_conditions": ["过去只看不自测", "晚间安静"], "status": "改造", "reason": "需要固定同口径反馈", "evidence": "原S3及既往尝试回答", "source": "个人改造", "background": "过去缺反馈", "options": ["只看不测", "固定小测"], "decision": "固定同口径小测", "consequences": "占用主时段", "reversibility": "可在下一版本改测试频率"},
+    {"step": "S4 使用晨间时段", "personal_conditions": ["夜型作息"], "status": "放弃", "reason": "与稳定作息冲突", "evidence": "原S4及作息回答", "source": "个人改造", "background": "原帖默认晨间执行", "options": ["早晨", "晚间"], "decision": "移到晚间", "consequences": "不安排晨间任务", "reversibility": "可改回"}
+  ],
+  "executable_plan": {
+    "personal_v1": ["晚间40个新词", "复习旧词并同口径自测", "碎片复习可选"],
+    "plan": {
+      "goal": "7天内只验证40词晚间流程能否纳入40分钟",
+      "success_criteria": "6次机会至少完成4次并留下每次实际用时和第7天同口径观察记录",
+      "assumptions": ["40词流程的时间可行性仍待验证", "本轮不改变词量"],
+      "resources": ["现有词表或App", "晚间安静环境", "计时器"],
+      "phases": [
+        {"name": "P0基线", "duration": "今晚一次", "minutes": 10, "actions": ["建立100词同口径测试并记录基线"], "output": "基线记录"},
+        {"name": "P1练习", "duration": "第1至6天", "minutes": 35, "actions": ["20分钟新词", "15分钟复习和自测", "记录实际用时"], "output": "每日用时与正确率观察记录", "checkpoint": {"when": "第3天", "metric": "当日实际用时", "threshold": ">40", "action": "结束本轮并记为当前版本时间不可行，不在本轮改词量"}},
+        {"name": "P2测试", "duration": "第7天", "minutes": 35, "actions": ["30分钟同口径测试", "5分钟整理"], "output": "测试与时间记录", "checkpoint": {"when": "第7天", "metric": "当日实际用时", "threshold": "<=40", "action": "当前时间版可保留，正确率仅作后续观察"}}
+      ],
+      "schedule": "今晚基线，之后6个练习机会，第7天测试",
+      "fallbacks": ["没时间时只复习不新增", "缺安静环境时仅用现有词表复习", "中断后不补债", "状态差时停止"],
+      "stop_rules": ["任一次实际用时超过40分钟即结束本轮", "需要改词量时另开新版本并重新计算机会数"],
+      "first_action": "今晚从现有词表抽取基线词并完成10分钟测试",
+      "not_to_do": ["不加入听力口语写作新习惯", "不追补断档", "不在本轮中途改变词量"],
+      "provenance": [
+        {"phase": "P0基线", "source": "个人改造", "detail": "由原S3自测改为先留基线"},
+        {"phase": "P1练习", "source": "个人改造", "detail": "由原S1与S2减量和组合"},
+        {"phase": "P2测试", "source": "原作者", "detail": "保留原S3自测并统一口径"}
+      ],
+      "feasibility_checks": {"resources": "使用现有词表或App", "dependencies": "无需新增付费依赖", "risks": "可逆并可停止", "habit_changes": 1},
+      "time_budgets": [
+        {"name": "首晚", "available_minutes": 40, "phase_names": ["P0基线"]},
+        {"name": "练习日", "available_minutes": 40, "phase_names": ["P1练习"]},
+        {"name": "测试日", "available_minutes": 40, "phase_names": ["P2测试"]}
+      ]
+    }
+  },
+  "verification_card": {
+    "hypothesis": "40词晚间流程能在40分钟内完成",
+    "action": "不改变词量，完成6次练习机会并在第7天同口径观察",
+    "context": "工作日晚间、安静环境、现有词表或App",
+    "cost": "每次35分钟计划用时，无新增购买",
+    "reversibility": "可停止本轮；不同词量另开新版本",
+    "frequency_or_opportunities": "6次机会至少完成4次",
+    "metric": "每次实际用时、完成次数、第7天正确率观察及执行环境",
+    "stop_rule": "任一次实际用时超过40分钟或影响既定睡眠时段即结束本轮",
+    "decision_rule": "完成>=4次且均未超40分钟则当前时间版可保留；超时则记为当前版本时间不可行；不足4次为证据不足；词量是否合适不在本轮裁决",
+    "first_action": "今晚完成基线测试"
+  },
+  "profile_updates": []
+}

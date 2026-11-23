@@ -1,0 +1,45 @@
+{
+  "outcome":"fitted",
+  "domain_mode":"vertical",
+  "experience_summary":"Adapt morning page review into a 30-minute evening routine; pending verification (待验证).",
+  "content_type":"可执行经验",
+  "author_goal":"Review reading notes regularly for retention",
+  "evidence_strength":"Author self-report only; no user records or controls",
+  "author_conditions":["Author reviews each morning"],
+  "steps":["S1 Review 20 pages every morning","S2 Reread notes weekly"],
+  "claims":["Author claims this improves retention"],
+  "hidden_assumptions":["Assumption: morning review matches the user's schedule"],
+  "unknowns":["Whether the evening routine fits 30 minutes"],
+  "branches":["If actual time exceeds 30 minutes, end this version and design a separate shorter version"],
+  "questions":[
+    {"round":"initial","question":"How much time is available each evening?","why_it_matters":"Changes the page quota","judgments_it_can_flip":["S1"],"uncertainty":"Available time","priority":1,"answer_status":"answered"},
+    {"round":"initial","question":"Is morning or evening easier to protect?","why_it_matters":"Changes the morning step","judgments_it_can_flip":["S1"],"uncertainty":"Schedule","priority":2,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 Review 20 pages every morning","personal_conditions":["30 minutes available","Evening is easier"],"status":"改造","reason":"The fixed quota and morning slot conflict with user constraints","evidence":"Original S1 and two user answers","source":"Personal adaptation","background":"Original step assumes morning time","options":["Keep 20 pages","Use a time box"],"decision":"Review for 20 minutes in the evening","consequences":"Coverage may decrease","reversibility":"Can change in a separate version"},
+    {"step":"S2 Reread notes weekly","personal_conditions":["Existing notes are available"],"status":"保留","reason":"Existing resources support the original step","evidence":"Original S2 and user resource answer","source":"Original author","background":"Weekly review is explicit","options":["Keep","Remove"],"decision":"Keep one weekly review","consequences":"Uses one weekly slot","reversibility":"Can change frequency later"}
+  ],
+  "executable_plan":{
+    "personal_v1":["Review for 20 minutes in the evening","Recall for 5 minutes","Keep one weekly review"],
+    "plan":{
+      "goal":"Test only whether the evening review fits 30 minutes",
+      "success_criteria":"Complete at least 3 of 5 opportunities with actual-time records",
+      "assumptions":["Time feasibility is unverified","Do not change the time box during this round"],
+      "resources":["Existing notes","Timer","Quiet evening space"],
+      "phases":[
+        {"name":"P0 baseline","duration":"First evening","minutes":5,"actions":["Prepare notes and a record sheet"],"output":"Baseline sheet"},
+        {"name":"P1 review","duration":"Five opportunities","minutes":25,"actions":["20-minute review","5-minute recall"],"output":"Time and recall records","checkpoint":{"when":"Third opportunity","metric":"Actual minutes","threshold":">30","action":"End this version without changing the time box"}}
+      ],
+      "schedule":"Prepare tonight, then use five evening opportunities",
+      "fallbacks":["When busy, record a skip without debt","If notes are missing, pause","After interruption, resume the next slot","When unwell, stop"],
+      "stop_rules":["End this version if actual time exceeds 30 minutes","Use a separate version for a different time box"],
+      "first_action":"Prepare existing notes and the baseline sheet tonight",
+      "not_to_do":["Do not add a new language habit","Do not change the time box during this round"],
+      "provenance":[{"phase":"P0 baseline","source":"Personal adaptation","detail":"Preparation for original S1"},{"phase":"P1 review","source":"Personal adaptation","detail":"Adapted S1 with S2 retained weekly"}],
+      "feasibility_checks":{"resources":"Notes and timer are available","dependencies":"No purchases","risks":"Low-cost and reversible","habit_changes":1},
+      "time_budgets":[{"name":"First evening","available_minutes":30,"phase_names":["P0 baseline"]},{"name":"Review evening","available_minutes":30,"phase_names":["P1 review"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"The evening review fits 30 minutes","action":"Keep the same time box for five opportunities","context":"Existing notes, timer and quiet evening space","cost":"25 planned minutes per opportunity","reversibility":"Stop this version; use another version for a new time box","frequency_or_opportunities":"At least 3 of 5 opportunities","metric":"Actual time, completed recall and environment","stop_rule":"End if actual time exceeds 30 minutes","decision_rule":"Retain the current time version if at least 3 sessions fit; otherwise mark infeasible or insufficient evidence","first_action":"Prepare the baseline sheet tonight"},
+  "profile_updates":[]
+}

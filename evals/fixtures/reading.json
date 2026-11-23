@@ -1,0 +1,47 @@
+{
+  "outcome":"fitted",
+  "domain_mode":"vertical",
+  "experience_summary":"将每天50页逐句摘抄改为25分钟阅读复述流程，待验证。",
+  "content_type":"可执行经验",
+  "author_goal":"通过阅读和复述加深非虚构内容理解",
+  "evidence_strength":"只有作者自述，没有当前用户复述记录或对照",
+  "author_conditions":["周末有复述安排","每日可用时间未知"],
+  "steps":["S1 每天读50页","S2 逐句摘抄","S3 周末复述"],
+  "claims":["作者声称比只画线理解更深"],
+  "hidden_assumptions":["推测：页数目标不妨碍复述"],
+  "unknowns":["15分钟阅读加10分钟复述能否在25分钟内完成"],
+  "branches":["如果本轮超过25分钟，那么当前版时间不可行，另开缩短阅读版本"],
+  "questions":[
+    {"round":"initial","question":"本次学习目标是什么？","why_it_matters":"决定页数或复述哪个优先","judgments_it_can_flip":["S1","S3"],"uncertainty":"目标","priority":1,"answer_status":"answered"},
+    {"round":"initial","question":"工作日可用多少分钟？","why_it_matters":"决定页数和时间盒","judgments_it_can_flip":["S1"],"uncertainty":"时间","priority":2,"answer_status":"answered"},
+    {"round":"initial","question":"过去摘抄的具体卡点是什么？","why_it_matters":"决定摘抄是否保留","judgments_it_can_flip":["S2"],"uncertainty":"既往卡点","priority":3,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 每天读50页","personal_conditions":["目标是复述","每天25分钟"],"status":"改造","reason":"固定页数可能挤压复述","evidence":"原S1及目标时间回答","source":"个人改造","background":"原步骤按页数","options":["50页","15分钟时间盒"],"decision":"读15分钟不设页数","consequences":"阅读进度减慢","reversibility":"下一版本可改"},
+    {"step":"S2 逐句摘抄","personal_conditions":["过去摘抄耗时且回忆困难"],"status":"放弃","reason":"与既往卡点冲突","evidence":"原S2及既往回答","source":"个人改造","background":"摘抄未服务当前目标","options":["逐句摘抄","三点复述"],"decision":"改三点复述","consequences":"笔记减少","reversibility":"可恢复"},
+    {"step":"S3 周末复述","personal_conditions":["目标是能复述","纸笔已有"],"status":"保留","reason":"与目标直接一致","evidence":"原S3及目标回答","source":"原作者","background":"原经验含复述","options":["保留","删除"],"decision":"保留并增加每次小复述","consequences":"复述机会增加","reversibility":"可改频率"}
+  ],
+  "executable_plan":{
+    "personal_v1":["15分钟阅读","5分钟三点复述","5分钟回看遗漏"],
+    "plan":{
+      "goal":"5次机会只验证25分钟阅读复述流程的时间可行性",
+      "success_criteria":"至少3次留下实际用时和三点复述记录",
+      "assumptions":["25分钟流程待验证","本轮不改变阅读时长"],
+      "resources":["同一本书","纸笔或备忘录","计时器"],
+      "phases":[
+        {"name":"P0基线","duration":"首晚一次","minutes":25,"actions":["读15分钟","复述并回看10分钟"],"output":"基线三点卡"},
+        {"name":"P1练习","duration":"第1至5次","minutes":25,"actions":["15分钟阅读","5分钟复述","5分钟回看"],"output":"实际用时与三点卡","checkpoint":{"when":"第3次","metric":"实际用时","threshold":">25","action":"结束本轮，当前版时间不可行，不在本轮改时长"}}
+      ],
+      "schedule":"今晚基线，随后5个练习机会",
+      "fallbacks":["没时间时仅做5分钟复述","缺纸笔用现有备忘录","中断不补","状态差停止"],
+      "stop_rules":["任一次超过25分钟即结束本轮","改时长另开版本"],
+      "first_action":"今晚建立三点复述卡并读15分钟",
+      "not_to_do":["不恢复逐句摘抄","不加页数指标","不在本轮改时长"],
+      "provenance":[{"phase":"P0基线","source":"个人改造","detail":"由原S1和S3建立基线"},{"phase":"P1练习","source":"个人改造","detail":"由原S1至S3改成阅读复述流程"}],
+      "feasibility_checks":{"resources":"书与记录工具已有","dependencies":"无新增购买","risks":"低成本可逆","habit_changes":1},
+      "time_budgets":[{"name":"首晚","available_minutes":25,"phase_names":["P0基线"]},{"name":"练习日","available_minutes":25,"phase_names":["P1练习"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"25分钟阅读复述流程能在预算内完成","action":"保持15加10分钟结构完成5次机会","context":"同一本书和现有记录工具","cost":"每次25分钟","reversibility":"可停止本轮，新时长另开版本","frequency_or_opportunities":"5次至少完成3次","metric":"实际用时、三点复述是否完成及环境","stop_rule":"任一次超过25分钟即结束本轮","decision_rule":"至少3次未超时则当前时间版保留，超时则当前版不可行，不足3次证据不足","first_action":"今晚建立三点复述卡"},
+  "profile_updates":[]
+}

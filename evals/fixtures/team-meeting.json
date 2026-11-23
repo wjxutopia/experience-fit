@@ -1,0 +1,53 @@
+{
+  "outcome":"fitted",
+  "domain_mode":"generic",
+  "experience_summary":"通用模式，领域规则未覆盖：将30分钟全员汇报改为4人15分钟行动项例会，待验证。",
+  "content_type":"可执行经验｜通用模式，领域规则未覆盖",
+  "author_goal":"通过固定全员例会流程提升团队效率",
+  "evidence_strength":"原帖没有记录样本或对照，当前没有团队实践反馈",
+  "author_conditions":[],
+  "steps":["S1 每天开30分钟全员例会","S2 每人汇报全部工作","S3 主持人逐一点评","S4 会中购买并配置协作软件","S5 秘书记录完整发言"],
+  "claims":["作者声称团队效率会明显提升"],
+  "hidden_assumptions":["推测：团队有采购配置权限并同意完整记录"],
+  "unknowns":["4人15分钟三字段例会能否完成并支持行动项闭环"],
+  "branches":["如果5次中至少4次按时完成且字段完整，那么保留当前版本","如果未达到过程标准，那么结束本轮另开版本","如果没有到期行动项，那么闭环效果证据不足"],
+  "questions":[
+    {"round":"initial","question":"唯一想改善的团队结果是什么？","why_it_matters":"决定例会和记录范围","judgments_it_can_flip":["S1","S2","S5"],"uncertainty":"目标","priority":1,"answer_status":"answered"},
+    {"round":"initial","question":"实际参会人数是多少？","why_it_matters":"决定全员汇报时长","judgments_it_can_flip":["S1","S2"],"uncertainty":"人数","priority":2,"answer_status":"answered"},
+    {"round":"initial","question":"采购是否需审批或不可退款？","why_it_matters":"决定购买步骤与风险门控","judgments_it_can_flip":["S4"],"uncertainty":"采购边界","priority":3,"answer_status":"answered"},
+    {"round":"initial","question":"是否有权配置新系统？","why_it_matters":"决定现场配置是否可执行","judgments_it_can_flip":["S4"],"uncertainty":"权限","priority":4,"answer_status":"answered"},
+    {"round":"initial","question":"完整发言记录的同意和保密边界？","why_it_matters":"决定记录范围","judgments_it_can_flip":["S5"],"uncertainty":"隐私边界","priority":5,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 每天开30分钟全员例会","personal_conditions":["4人","每天15分钟"],"status":"改造","reason":"30分钟超过时间上限","evidence":"原S1及人数时间回答","source":"个人改造","background":"保留每日例会载体","options":["30分钟","15分钟"],"decision":"固定15分钟","consequences":"不能完整汇报","reversibility":"本轮不延长，下版可改"},
+    {"step":"S2 每人汇报全部工作","personal_conditions":["目标行动项闭环"],"status":"改造","reason":"全部工作超出唯一目标","evidence":"原S2及目标回答","source":"个人改造","background":"需要缩小汇报范围","options":["全部工作","行动项"],"decision":"每人最多2分钟更新行动项","consequences":"不评价其他工作","reversibility":"下版可改"},
+    {"step":"S3 主持人逐一点评","personal_conditions":["主持人不能逐一点评"],"status":"改造","reason":"与明确限制冲突","evidence":"原S3及主持人限制","source":"个人改造","background":"只保留核对动作","options":["点评","核对"],"decision":"只核对负责人期限和到期项","consequences":"不形成全面工作评价","reversibility":"下版可改"},
+    {"step":"S4 会中购买并配置协作软件","personal_conditions":["预算0元","无新系统权限","已有共享文档"],"status":"放弃","reason":"采购和配置均与边界冲突","evidence":"原S4及预算权限回答","source":"个人改造","background":"原步骤依赖新软件","options":["采购","放弃"],"decision":"不采购不配置","consequences":"无新软件功能","reversibility":"未发生变更"},
+    {"step":"S5 秘书记录完整发言","personal_conditions":["只同意行动项负责人期限","不写客户私人信息"],"status":"改造","reason":"完整记录超出同意范围","evidence":"原S5及同意边界回答","source":"个人改造","background":"需要闭环记录而非发言档案","options":["完整发言","三字段"],"decision":"只记录三字段","consequences":"不能还原讨论","reversibility":"扩大范围需重新征得同意"}
+  ],
+  "executable_plan":{
+    "personal_v1":["4人每天15分钟","只更新行动项","主持人只核对","现有共享文档三字段记录"],
+    "plan":{
+      "goal":"验证4人15分钟三字段行动项例会的可执行性",
+      "success_criteria":"5次至少4次不超15分钟且新增变更项都有负责人期限",
+      "assumptions":["4人能同时参加","共享文档可用","闭环基线未知"],
+      "resources":["4名成员","每天15分钟","现有共享文档","预算0元"],
+      "phases":[
+        {"name":"P1定位清单","duration":"每次开始","minutes":2,"actions":["打开现有文档并定位到期项"],"output":"待核对清单"},
+        {"name":"P2行动项更新","duration":"每次例会","minutes":8,"actions":["4人每人最多2分钟更新"],"output":"当次更新"},
+        {"name":"P3主持核对","duration":"每次例会","minutes":3,"actions":["核对负责人期限和到期项"],"output":"三字段完整记录"},
+        {"name":"P4记录复核","duration":"每次结束","minutes":2,"actions":["复核记录边界"],"output":"合规记录","checkpoint":{"when":"第3次结束","metric":"前3次按时且字段完整次数","threshold":"<2","action":"结束本轮，新时长或工具另开版本"}}
+      ],
+      "schedule":"明天开始每天一次共5次机会",
+      "fallbacks":["没时间则未完整部分记未完成","文档不可用则暂缓","中断不补开","状态差停止"],
+      "stop_rules":["越界记录立即结束本轮","需要采购权限或延时则结束本轮","第3次过程检查未达阈值结束"],
+      "first_action":"明天在现有文档建立行动项负责人期限三字段清单",
+      "not_to_do":["不完整汇报","不逐一点评","不采购配置","不记录完整发言","不在本轮改关键变量"],
+      "provenance":[{"phase":"P1定位清单","source":"个人改造","detail":"由原S4和S5改为现有文档"},{"phase":"P2行动项更新","source":"个人改造","detail":"由原S1和S2压缩到行动项"},{"phase":"P3主持核对","source":"个人改造","detail":"由原S3点评改为核对"},{"phase":"P4记录复核","source":"个人改造","detail":"由原S5完整发言改为三字段"}],
+      "feasibility_checks":{"resources":"现有人员时间和共享文档","dependencies":"4人参与且文档可用","risks":"超时和越界记录，停止规则控制","habit_changes":1},
+      "time_budgets":[{"name":"每日例会","available_minutes":15,"phase_names":["P1定位清单","P2行动项更新","P3主持核对","P4记录复核"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"4人15分钟三字段例会可完成并支持闭环","action":"保持相同流程完成5次例会","context":"4人现有共享文档每天15分钟","cost":"0元，每次60人分钟","reversibility":"无采购系统变更，可恢复原安排","frequency_or_opportunities":"每天1次共5次","metric":"按时完成次数、三字段完整性、到期项闭环数量；无到期项不计算闭环率","stop_rule":"越界记录、需要采购权限或第3次未达过程阈值即结束","decision_rule":"至少4次按时且字段完整则保留当前版，未达则当前版不适用，无到期项则闭环证据不足","first_action":"建立三字段清单并计时"},
+  "profile_updates":[]
+}

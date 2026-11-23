@@ -1,0 +1,50 @@
+{
+  "outcome":"fitted",
+  "domain_mode":"vertical",
+  "experience_summary":"同一200词经验在120分钟晨型高基础条件下形成另一版本，待验证。",
+  "content_type":"可执行经验",
+  "author_goal":"通过新词、复习和自测组合积累词汇",
+  "evidence_strength":"原帖只有作者自述，没有记录、对照或当前用户证据",
+  "author_conditions":["在校生","每天3小时","已有3000词基础"],
+  "steps":["S1 早晨背200个新词","S2 碎片时间复习旧词","S3 晚间自测","S4 使用晨间时段"],
+  "claims":["作者声称这样记得牢"],
+  "hidden_assumptions":["推测：作者能稳定早起并完成自测"],
+  "unknowns":["200词晨间流程能否在120分钟内完成"],
+  "branches":["如果实际用时超过120分钟，那么结束本轮，另开不同剂量版本"],
+  "questions":[
+    {"round":"initial","question":"工作日稳定可用多少分钟？","why_it_matters":"决定新词量和预算","judgments_it_can_flip":["S1"],"uncertainty":"时间","priority":1,"answer_status":"answered"},
+    {"round":"initial","question":"当前基础和复习方式？","why_it_matters":"决定起点与自测","judgments_it_can_flip":["S1","S3"],"uncertainty":"基础","priority":2,"answer_status":"answered"},
+    {"round":"initial","question":"早晨还是晚间更容易执行？","why_it_matters":"决定晨间步骤","judgments_it_can_flip":["S4"],"uncertainty":"作息","priority":3,"answer_status":"answered"},
+    {"round":"initial","question":"白天是否有碎片时间？","why_it_matters":"决定碎片复习安排","judgments_it_can_flip":["S2"],"uncertainty":"碎片时间","priority":4,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 早晨背200个新词","personal_conditions":["每天120分钟","约3500词","晨型作息"],"status":"保留","reason":"时间基础与晨间条件支持尝试原数量","evidence":"原S1及时间基础作息回答","source":"原作者","background":"原方案时间较多","options":["保留200词","减量"],"decision":"保留200词晨间版","consequences":"每日投入较多","reversibility":"下一版本可减量"},
+    {"step":"S2 碎片时间复习旧词","personal_conditions":["白天无碎片时间","午间有固定20分钟"],"status":"改造","reason":"无碎片时间但有固定午间时段","evidence":"原S2及碎片时间回答","source":"个人改造","background":"原步骤依赖碎片时间","options":["碎片复习","午间固定复习"],"decision":"改为午间20分钟","consequences":"占用午间","reversibility":"可调整"},
+    {"step":"S3 晚间自测","personal_conditions":["已有每晚同口径自测习惯"],"status":"保留","reason":"现有习惯与原步骤一致","evidence":"原S3及既往方式回答","source":"原作者","background":"用户已有自测","options":["保留","删除"],"decision":"保留","consequences":"继续使用晚间时段","reversibility":"可改频率"},
+    {"step":"S4 使用晨间时段","personal_conditions":["晨型作息"],"status":"保留","reason":"与原步骤一致","evidence":"原S4及作息回答","source":"原作者","background":"晨间可稳定执行","options":["早晨","晚间"],"decision":"保留晨间","consequences":"晨间任务较重","reversibility":"可改期"}
+  ],
+  "executable_plan":{
+    "personal_v1":["晨间200个新词","午间固定20分钟复习","保留晚间同口径自测"],
+    "plan":{
+      "goal":"7天内只验证200词组合流程能否纳入120分钟",
+      "success_criteria":"6次机会至少4次留下实际用时和同口径观察",
+      "assumptions":["200词时间可行性待验证","本轮不改变词量"],
+      "resources":["现有词表或App","晨间90分钟","午间20分钟","晚间10分钟"],
+      "phases":[
+        {"name":"P0基线","duration":"首晚一次","minutes":20,"actions":["建立同口径基线"],"output":"基线记录"},
+        {"name":"P1练习","duration":"第1至6天","minutes":120,"actions":["90分钟新词","20分钟午间复习","10分钟晚间自测"],"output":"用时与观察记录","checkpoint":{"when":"第3天","metric":"当日合计实际用时","threshold":">120","action":"结束本轮，不在本轮改词量"}},
+        {"name":"P2测试","duration":"第7天","minutes":60,"actions":["同口径测试","整理记录"],"output":"测试记录","checkpoint":{"when":"第7天","metric":"当日实际用时","threshold":"<=120","action":"当前时间版可保留，正确率仅作观察"}}
+      ],
+      "schedule":"今晚基线，之后6次练习，第7天测试",
+      "fallbacks":["没时间时记录跳过","缺安静环境暂停新词","中断不补","状态差停止"],
+      "stop_rules":["合计超过120分钟即结束本轮","改词量另开版本"],
+      "first_action":"今晚建立同口径基线",
+      "not_to_do":["不增加其他语言习惯","不在本轮改词量"],
+      "provenance":[{"phase":"P0基线","source":"个人改造","detail":"由原S3建立基线"},{"phase":"P1练习","source":"个人改造","detail":"保留S1与S3，改造S2为午间固定复习"},{"phase":"P2测试","source":"原作者","detail":"保留S3同口径自测"}],
+      "feasibility_checks":{"resources":"词表和三个时段已由用户确认","dependencies":"无新增购买","risks":"可逆可停止","habit_changes":1},
+      "time_budgets":[{"name":"首晚","available_minutes":120,"phase_names":["P0基线"]},{"name":"练习日","available_minutes":120,"phase_names":["P1练习"]},{"name":"测试日","available_minutes":120,"phase_names":["P2测试"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"200词组合流程能在120分钟内完成","action":"保持词量完成6次机会并同口径观察","context":"晨型作息和已确认三个时段","cost":"练习日计划120分钟","reversibility":"可停止本轮，新词量另开版本","frequency_or_opportunities":"6次至少4次","metric":"合计实际用时、完成次数和正确率观察","stop_rule":"合计超过120分钟即结束本轮","decision_rule":"至少4次未超时则当前时间版保留，超时则当前版不可行，不足4次证据不足；不裁决其他词量","first_action":"今晚建立基线"},
+  "profile_updates":[]
+}

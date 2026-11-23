@@ -1,0 +1,50 @@
+{
+  "outcome":"fitted",
+  "domain_mode":"vertical",
+  "experience_summary":"将每天20道编程题改为45分钟两题独立输出流程，待验证。",
+  "content_type":"可执行经验",
+  "author_goal":"通过每日练题和周末重做提升独立解题",
+  "evidence_strength":"只有作者自述，没有当前用户代码记录或对照",
+  "author_conditions":["作者每日题量20","作者基础未知"],
+  "steps":["S1 每天刷20题","S2 不会立刻看答案照抄","S3 周末重做","S4 每日练习"],
+  "claims":["作者声称坚持后能独立解题"],
+  "hidden_assumptions":["推测：题量与当前基础匹配"],
+  "unknowns":["两题加脱稿重写能否在45分钟内完成"],
+  "branches":["如果本轮超过45分钟，那么当前流程时间不可行，另开不同题量版本"],
+  "questions":[
+    {"round":"initial","question":"当前练习目标是什么？","why_it_matters":"决定题量或独立输出优先","judgments_it_can_flip":["S1"],"uncertainty":"目标","priority":1,"answer_status":"answered"},
+    {"round":"initial","question":"当前基础如何？","why_it_matters":"决定题量与难度","judgments_it_can_flip":["S1"],"uncertainty":"基础","priority":2,"answer_status":"answered"},
+    {"round":"initial","question":"每天可用多少分钟？","why_it_matters":"决定时间预算","judgments_it_can_flip":["S1","S4"],"uncertainty":"时间","priority":3,"answer_status":"answered"},
+    {"round":"initial","question":"过去练题的具体卡点是什么？","why_it_matters":"决定答案使用方式","judgments_it_can_flip":["S2"],"uncertainty":"既往卡点","priority":4,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 每天刷20题","personal_conditions":["每天45分钟","目标是独立输出"],"status":"改造","reason":"原题量会挤压独立重写","evidence":"原S1及目标时间回答","source":"个人改造","background":"原步骤追求题量","options":["20题","2题"],"decision":"每次2题","consequences":"题量下降","reversibility":"下一版本可改"},
+    {"step":"S2 不会立刻看答案照抄","personal_conditions":["过去看懂答案但隔天写不出"],"status":"放弃","reason":"与既往卡点冲突","evidence":"原S2及既往回答","source":"个人改造","background":"需要独立输出","options":["立即照抄","先独立尝试"],"decision":"先独立尝试再核对","consequences":"单次耗时增加","reversibility":"可改回"},
+    {"step":"S3 周末重做","personal_conditions":["目标是独立输出"],"status":"保留","reason":"直接服务目标","evidence":"原S3及目标回答","source":"原作者","background":"原经验有重做","options":["保留","删除"],"decision":"周末重做2题","consequences":"占用周末45分钟","reversibility":"可改频率"},
+    {"step":"S4 每日练习","personal_conditions":["每天45分钟","环境已有"],"status":"改造","reason":"需要明确时间盒和反馈","evidence":"原S4及资源回答","source":"个人改造","background":"原步骤没有时间分配","options":["自由练习","45分钟时间盒"],"decision":"10分钟尝试加25分钟核对加10分钟重写","consequences":"结构更固定","reversibility":"下一版本可改"}
+  ],
+  "executable_plan":{
+    "personal_v1":["每次2题","先独立尝试再核对","脱离答案重写"],
+    "plan":{
+      "goal":"5次机会只验证45分钟两题流程的时间可行性",
+      "success_criteria":"至少3次保存代码、实际用时和独立重写记录",
+      "assumptions":["45分钟流程待验证","本轮不改变题量"],
+      "resources":["现有电脑","Python环境","同难度题单"],
+      "phases":[
+        {"name":"P0基线","duration":"首晚一次","minutes":45,"actions":["选2题","记录独立完成情况"],"output":"基线代码"},
+        {"name":"P1练习","duration":"第1至5次","minutes":45,"actions":["10分钟尝试","25分钟完成核对","10分钟脱稿重写"],"output":"代码与用时","checkpoint":{"when":"第3次","metric":"实际用时","threshold":">45","action":"结束本轮，不在本轮改题量"}},
+        {"name":"P2重做","duration":"周末一次","minutes":45,"actions":["重做标记的2题","记录差异"],"output":"重做代码","checkpoint":{"when":"周末","metric":"独立写出题数","threshold":">=1","action":"记录当前流程观察结果，不宣称能力提升"}}
+      ],
+      "schedule":"今晚基线，5次练习，周末重做",
+      "fallbacks":["没时间时保存当前卡点","缺环境时暂缓而不照抄","中断不补","状态差停止"],
+      "stop_rules":["任一次超过45分钟即结束本轮","改题量另开版本"],
+      "first_action":"今晚建立2题题单并完成基线",
+      "not_to_do":["不增加新语言","不追求20题","不在本轮改题量"],
+      "provenance":[{"phase":"P0基线","source":"个人改造","detail":"由原S1减量为2题基线"},{"phase":"P1练习","source":"个人改造","detail":"由原S2和S4改造答案使用与时间盒"},{"phase":"P2重做","source":"原作者","detail":"保留原S3周末重做"}],
+      "feasibility_checks":{"resources":"电脑与Python环境已有","dependencies":"无新增购买","risks":"低成本可逆","habit_changes":1},
+      "time_budgets":[{"name":"首晚","available_minutes":45,"phase_names":["P0基线"]},{"name":"练习日","available_minutes":45,"phase_names":["P1练习"]},{"name":"周末","available_minutes":45,"phase_names":["P2重做"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"两题加脱稿重写能在45分钟内完成","action":"保持两题流程完成5次机会并重做","context":"现有电脑Python环境和同难度题单","cost":"每次45分钟","reversibility":"可停止本轮，新题量另开版本","frequency_or_opportunities":"5次至少完成3次","metric":"实际用时、代码记录、独立重写及题目难度","stop_rule":"任一次超过45分钟即结束本轮","decision_rule":"至少3次未超时则当前时间流程保留，超时则当前流程不可行，不足3次证据不足","first_action":"今晚建立2题题单"},
+  "profile_updates":[]
+}

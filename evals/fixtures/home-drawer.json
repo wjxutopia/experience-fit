@@ -1,0 +1,66 @@
+{
+  "outcome": "fitted",
+  "domain_mode": "vertical",
+  "experience_summary": "将全屋收纳改为租房单抽屉零预算实验，结果待验证。",
+  "content_type": "可执行经验",
+  "author_goal": "通过分类、收纳工具和每日维护保持全屋整齐",
+  "evidence_strength": "原帖只有作者自述，没有当前家庭或长期维持记录",
+  "author_conditions": ["作者未明示居住类型"],
+  "steps": ["S1 每天整理全屋", "S2 先买齐收纳盒", "S3 分类并归位", "S4 每天维护10分钟"],
+  "claims": ["作者声称全屋更易维持"],
+  "hidden_assumptions": ["推测：作者允许购买用品并处理全屋"],
+  "unknowns": ["旧纸盒固定布局是否便于两人取出使用归位"],
+  "branches": ["如果旧盒阻碍取用，那么结束本轮并恢复原布局，另开新布局版本"],
+  "questions": [
+    {"round": "initial", "question": "是否租房且允许打孔？", "why_it_matters": "决定固定改动是否退出", "judgments_it_can_flip": ["S1"], "uncertainty": "居住权限", "priority": 1, "answer_status": "answered"},
+    {"round": "initial", "question": "本次整理哪个区域？", "why_it_matters": "决定全屋步骤是否缩减", "judgments_it_can_flip": ["S1"], "uncertainty": "本次范围", "priority": 2, "answer_status": "answered"},
+    {"round": "initial", "question": "预算和已有容器是什么？", "why_it_matters": "决定购买步骤是否保留", "judgments_it_can_flip": ["S2"], "uncertainty": "预算资源", "priority": 3, "answer_status": "answered"},
+    {"round": "initial", "question": "每天可用多少分钟？", "why_it_matters": "决定维护时间", "judgments_it_can_flip": ["S4"], "uncertainty": "可用时间", "priority": 4, "answer_status": "answered"}
+  ],
+  "fit_judgments": [
+    {"step": "S1 每天整理全屋", "personal_conditions": ["只整理玄关抽屉", "每天15分钟"], "status": "改造", "reason": "范围超过本次目标", "evidence": "原S1及区域回答", "source": "个人改造", "background": "原步骤为全屋", "options": ["全屋", "单抽屉"], "decision": "只整理玄关抽屉", "consequences": "其他区域不处理", "reversibility": "完全可逆"},
+    {"step": "S2 先买齐收纳盒", "personal_conditions": ["预算0元", "已有旧纸盒"], "status": "放弃", "reason": "与预算冲突且非必要", "evidence": "原S2及预算回答", "source": "个人改造", "background": "原步骤默认先购买", "options": ["购买", "用旧盒"], "decision": "不购买，先用旧盒", "consequences": "容器外观不统一", "reversibility": "无消费且可撤除"},
+    {"step": "S3 分类并归位", "personal_conditions": ["本次仅个人物品", "旧盒已具备"], "status": "保留", "reason": "可在现有条件执行", "evidence": "原S3及资源回答", "source": "原作者", "background": "核心动作是分类归位", "options": ["保留", "删除"], "decision": "保留", "consequences": "形成归位观察", "reversibility": "可恢复布局"},
+    {"step": "S4 每天维护10分钟", "personal_conditions": ["每天15分钟", "只观察一个抽屉"], "status": "改造", "reason": "每日观察无需10分钟", "evidence": "原S4及时间回答", "source": "个人改造", "background": "需要记录真实归位", "options": ["10分钟", "2分钟"], "decision": "每天2分钟归位记录", "consequences": "减少整理时长", "reversibility": "可在下一版本调整"}
+  ],
+  "executable_plan": {
+    "personal_v1": ["只整理玄关抽屉", "使用旧纸盒固定布局分类", "记录两人归位情况"],
+    "plan": {
+      "goal": "7天内只验证单抽屉旧盒固定布局的可执行性",
+      "success_criteria": "首次整理一次且随后至少4次真实归位记录",
+      "assumptions": ["旧盒固定布局是否适合仍待验证", "本轮不中途改布局"],
+      "resources": ["玄关抽屉", "旧纸盒", "首晚15分钟"],
+      "phases": [
+        {"name": "P0整理", "duration": "首晚一次", "minutes": 15, "actions": ["清空一个抽屉", "按常用度分类并用旧盒固定分区"], "output": "布局记录", "checkpoint": {"when": "第3天", "metric": "归位完成次数", "threshold": "<2", "action": "结束本轮并记录当前布局不适用，不在本轮重排"}},
+        {"name": "P1观察", "duration": "第1至7天", "minutes": 2, "actions": ["使用后归位并记录"], "output": "每日动线记录", "checkpoint": {"when": "第7天", "metric": "归位完成次数", "threshold": ">=4", "action": "无取用阻碍则保留当前布局"}}
+      ],
+      "schedule": "今晚整理，随后7天观察",
+      "fallbacks": ["没时间时只清一类物品", "缺旧盒时结束本轮而不购买", "中断后不补记录", "状态差时停止"],
+      "stop_rules": ["需要打孔购买或影响正常取用时停止并恢复", "需要重排时另开新版本"],
+      "first_action": "今晚只清空玄关抽屉",
+      "not_to_do": ["不买用品", "不做全屋", "不改固定结构", "不在本轮中途重排"],
+      "provenance": [
+        {"phase": "P0整理", "source": "个人改造", "detail": "由原S1至S3缩小范围并替换容器"},
+        {"phase": "P1观察", "source": "原作者", "detail": "由原S4维护改为归位记录"}
+      ],
+      "feasibility_checks": {"resources": "抽屉和旧盒已具备", "dependencies": "无购买和固定改动", "risks": "可逆，安全疑虑即停止", "habit_changes": 1},
+      "time_budgets": [
+        {"name": "首晚", "available_minutes": 15, "phase_names": ["P0整理"]},
+        {"name": "每日", "available_minutes": 15, "phase_names": ["P1观察"]}
+      ]
+    }
+  },
+  "verification_card": {
+    "hypothesis": "旧盒固定布局支持两人至少4次顺手续用归位",
+    "action": "一次整理后保持布局不变，记录7天内的取出使用归位",
+    "context": "现有租房玄关抽屉和旧纸盒",
+    "cost": "0元，首次15分钟，日常2分钟",
+    "reversibility": "可撤除旧盒恢复原状，新布局另开版本",
+    "frequency_or_opportunities": "7天内至少4次真实归位机会",
+    "metric": "归位次数、取用是否受阻、使用人和是否复发",
+    "stop_rule": "影响安全或正常取用即结束本轮",
+    "decision_rule": "归位>=4且无阻碍保留当前布局，不足4次为证据不足，反复受阻则当前布局不适用；不在本轮裁决其他布局",
+    "first_action": "今晚只整理这个抽屉"
+  },
+  "profile_updates": []
+}

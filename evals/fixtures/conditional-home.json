@@ -1,0 +1,49 @@
+{
+  "outcome":"conditional",
+  "domain_mode":"vertical",
+  "experience_summary":"居住权限与家庭信息拒答后，仅给出个人可移动物品的条件式单抽屉版本，待验证。",
+  "content_type":"可执行经验",
+  "author_goal":"通过分类归位维持物品秩序",
+  "evidence_strength":"只有作者自述，当前居住权限和家庭成员信息未知",
+  "author_conditions":["作者居住条件未知"],
+  "steps":["S1 每天整理全屋","S2 先买齐收纳盒","S3 分类并归位","S4 每天维护10分钟"],
+  "claims":["作者声称更易维持"],
+  "hidden_assumptions":["推测：作者有处理全屋和购买用品的权限"],
+  "unknowns":["是否允许非结构性调整","家庭成员及共用边界"],
+  "branches":["如果只需处理个人可移动物品，那么执行条件式单抽屉版本","如果涉及共用物品，那么只记录本人使用部分，不替他人决定","如果需要打孔电路燃气或其他专业操作，那么退出个性化建议"],
+  "questions":[
+    {"round":"initial","question":"居住权限和家庭成员有哪些限制？","why_it_matters":"决定能否处理固定或共用物品","judgments_it_can_flip":["S1"],"uncertainty":"权限和成员","priority":1,"answer_status":"declined"},
+    {"round":"initial","question":"本次是否只整理自己的一个抽屉？","why_it_matters":"决定能否缩小范围","judgments_it_can_flip":["S1"],"uncertainty":"本次范围","priority":2,"answer_status":"answered"},
+    {"round":"initial","question":"预算和已有容器是什么？","why_it_matters":"决定购买步骤","judgments_it_can_flip":["S2"],"uncertainty":"资源","priority":3,"answer_status":"answered"},
+    {"round":"initial","question":"每天可用多少分钟？","why_it_matters":"决定维护时间","judgments_it_can_flip":["S4"],"uncertainty":"时间","priority":4,"answer_status":"answered"}
+  ],
+  "fit_judgments":[
+    {"step":"S1 每天整理全屋","personal_conditions":["权限与成员未知","用户确认只整理自己的抽屉"],"status":"改造","reason":"未知条件不能支持全屋建议","evidence":"原S1、拒答状态和范围回答","source":"个人改造","background":"原步骤为全屋","options":["全屋","个人可移动区域"],"decision":"条件式只整理个人抽屉","consequences":"不处理共用区域","reversibility":"完全可逆"},
+    {"step":"S2 先买齐收纳盒","personal_conditions":["预算0元","已有旧纸盒"],"status":"放弃","reason":"与预算冲突且非必要","evidence":"原S2及资源回答","source":"个人改造","background":"原步骤默认购买","options":["购买","用旧盒"],"decision":"不购买","consequences":"外观不统一","reversibility":"无消费可撤除"},
+    {"step":"S3 分类并归位","personal_conditions":["只处理个人可移动物品"],"status":"保留","reason":"在明确范围内可执行","evidence":"原S3及范围回答","source":"原作者","background":"分类归位不依赖未知成员信息","options":["保留","删除"],"decision":"仅对个人物品保留","consequences":"形成本人归位记录","reversibility":"可恢复"},
+    {"step":"S4 每天维护10分钟","personal_conditions":["每天15分钟","只观察本人抽屉"],"status":"改造","reason":"观察无需10分钟","evidence":"原S4及时间回答","source":"个人改造","background":"需要低成本观察","options":["10分钟","2分钟"],"decision":"每天2分钟记录","consequences":"减少整理时长","reversibility":"下一版本可改"}
+  ],
+  "executable_plan":{
+    "personal_v1":["条件式 v1：仅整理本人可移动物品；涉及共用物品时不替他人决定"],
+    "plan":{
+      "goal":"在权限未知时只验证本人单抽屉固定布局是否可行",
+      "success_criteria":"首次整理一次且至少4次本人真实归位记录",
+      "assumptions":["不推断居住权限和家庭成员","本轮只处理本人可移动物品"],
+      "resources":["本人抽屉","旧纸盒","首晚15分钟"],
+      "phases":[
+        {"name":"P0整理","duration":"首晚一次","minutes":15,"actions":["只清空本人抽屉","旧盒固定分区"],"output":"个人布局记录","checkpoint":{"when":"第3天","metric":"本人归位次数","threshold":"<2","action":"结束本轮，不在本轮重排"}},
+        {"name":"P1观察","duration":"第1至7天","minutes":2,"actions":["本人使用后归位记录"],"output":"本人动线记录","checkpoint":{"when":"第7天","metric":"本人归位次数","threshold":">=4","action":"无阻碍则保留当前个人布局"}}
+      ],
+      "schedule":"今晚整理，随后7天观察",
+      "fallbacks":["没时间只清一类","缺旧盒结束本轮","中断不补","状态差停止"],
+      "stop_rules":["涉及共用或专业操作即退出","需要重排另开版本"],
+      "first_action":"今晚只整理自己的抽屉",
+      "not_to_do":["不处理共用物品","不购买不打孔","不在本轮重排"],
+      "provenance":[{"phase":"P0整理","source":"个人改造","detail":"由原S1至S3缩小到个人区域"},{"phase":"P1观察","source":"原作者","detail":"由原S4改为本人归位记录"}],
+      "feasibility_checks":{"resources":"仅使用本人现有区域和旧盒","dependencies":"无购买和权限假设","risks":"共用或专业操作即退出","habit_changes":1},
+      "time_budgets":[{"name":"首晚","available_minutes":15,"phase_names":["P0整理"]},{"name":"每日","available_minutes":15,"phase_names":["P1观察"]}]
+    }
+  },
+  "verification_card":{"hypothesis":"本人旧盒固定布局支持至少4次归位","action":"保持布局不变记录本人7天归位","context":"仅本人抽屉和可移动物品","cost":"0元，首次15分钟，日常2分钟","reversibility":"可恢复原状，新布局另开版本","frequency_or_opportunities":"至少4次本人真实归位机会","metric":"本人归位次数、取用阻碍和执行范围","stop_rule":"涉及共用争议或专业操作即退出","decision_rule":"至少4次无阻碍则保留当前个人布局，不足4次证据不足，受阻则当前版不适用","first_action":"今晚只整理自己的抽屉"},
+  "profile_updates":[]
+}

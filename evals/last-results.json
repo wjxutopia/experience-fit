@@ -1,0 +1,163 @@
+{
+  "scope": "独立fixture、脚本、状态与静态契约分类检查，不是模型语义正确性证明",
+  "eval_passed": 20,
+  "eval_total": 20,
+  "script_fixture_total": 13,
+  "contract_total": 7,
+  "results": [
+    {
+      "id": "L01",
+      "title": "每天背200词完整产物",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "独立fixture结构与可计算约束通过；语义另评"
+    },
+    {
+      "id": "L02",
+      "title": "阅读50页改复述版",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "reading独立fixture与手动三产物通过"
+    },
+    {
+      "id": "L03",
+      "title": "编程20题改独立输出",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "programming独立fixture与手动三产物通过"
+    },
+    {
+      "id": "L04",
+      "title": "纯英文学习经验",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "独立fixture结构与可计算约束通过；语义另评"
+    },
+    {
+      "id": "L05",
+      "title": "时间超预算与重复阶段名",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "按预期拒绝超预算及重复阶段名绕过"
+    },
+    {
+      "id": "L06",
+      "title": "缺少检查点与非有限时间",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "按预期拒绝无检查点及非有限时间"
+    },
+    {
+      "id": "L07",
+      "title": "表达限制、映射与分享上限",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "拒绝9问/4分支/步骤错位/未执行分享/通用标识缺失；百分比与承诺转为文档契约与评审"
+    },
+    {
+      "id": "L08",
+      "title": "一篇经验多个目标",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明"
+    },
+    {
+      "id": "H01",
+      "title": "租房单抽屉完整产物",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "独立fixture结构与可计算约束通过；语义另评"
+    },
+    {
+      "id": "G01",
+      "title": "摄影技能练习真实Agent样本",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "独立fixture结构与可计算约束通过；语义另评"
+    },
+    {
+      "id": "H03",
+      "title": "关键家庭信息拒答",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "独立拒答fixture含未知、条件式v1和3分支"
+    },
+    {
+      "id": "H04",
+      "title": "伪实验禁止清单仍在文档",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明；伪实验识别归模型/评审，脚本不判定"
+    },
+    {
+      "id": "B01",
+      "title": "空输入与无可执行步骤",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明"
+    },
+    {
+      "id": "B02",
+      "title": "超长文本与编码",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明；UTF-8 BOM读取通过"
+    },
+    {
+      "id": "G02",
+      "title": "团队协作通用模式真实Agent样本",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "独立fixture结构与可计算约束通过；语义另评"
+    },
+    {
+      "id": "B04",
+      "title": "纯情绪内容",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明"
+    },
+    {
+      "id": "B05",
+      "title": "医疗和投资",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明"
+    },
+    {
+      "id": "R01",
+      "title": "同一经验换个人条件",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "两份完整fixture有4处判定变化；语义合理性另评"
+    },
+    {
+      "id": "R02",
+      "title": "第二次使用、冲突、备份恢复与故障",
+      "evidence_type": "script_fixture",
+      "status": "PASS",
+      "detail": "确认/恢复/删除/降级、无效写不变、合法更新及restore写失败回滚均通过"
+    },
+    {
+      "id": "R03",
+      "title": "无脚本无持久化与真实粘贴路径",
+      "evidence_type": "contract",
+      "status": "PASS",
+      "detail": "静态Prompt契约存在；不是模型行为证明；四例纯Prompt记录存在"
+    }
+  ],
+  "static": {
+    "status": "PASS",
+    "errors": [],
+    "warnings": [],
+    "file_count": 29,
+    "bytes": 205358,
+    "pack": {
+      "entries": 29,
+      "root_skill": true,
+      "traversal": [],
+      "nested_zip": 0,
+      "bytes": 92266
+    }
+  }
+}
